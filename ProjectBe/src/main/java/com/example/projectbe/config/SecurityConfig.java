@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -20,71 +21,25 @@ public class SecurityConfig {
         throws Exception {
         // whiteList
         String[] whiteList = {
-            "/",
-            "/user/loginform",
-            "/user/required_loginform",
-            "/user/login",
+            "/", "/user/loginform", "/user/required_loginform", "/user/login/**",
         };
 
-        httpSecurity
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(config ->
-                config
-                    .requestMatchers(whiteList)
-                    .permitAll()
-                    .requestMatchers("/admin/**")
-                    .hasRole("ADMIN")
-                    .requestMatchers("/staff/**")
-                    .hasAnyRole("ADMIN", "STAFF")
-                    .anyRequest()
-                    .authenticated()
-            )
-            .formLogin(config ->
-                config
-                    .loginPage("/user/required_loginform")
-                    .loginProcessingUrl("/user/login")
-                    .usernameParameter("userName")
-                    .passwordParameter("password")
-                    .successHandler(new AuthSuccessHandler())
-                    .failureForwardUrl("/user/login_fail")
-                    .permitAll()
-            )
-            .logout(config ->
-                config
+        return httpSecurity
+        	.cors(cors -> cors.and()
+        	).csrf(csrf -> csrf.disable()
+            ).headers(headers -> headers.frameOptions(options -> options.disable())
+            ).authorizeHttpRequests(config -> config
+            		.requestMatchers(whiteList).permitAll()
+                    .anyRequest().authenticated()
+            ).oauth2Login(withDefaults()
+            ).formLogin(withDefaults()
+            ).exceptionHandling(config -> config
+            		.accessDeniedPage("/user/denied")
+            ).logout(config -> config
                     .logoutUrl("/user/logout")
                     .logoutSuccessUrl("/")
                     .permitAll()
-            )
-            .exceptionHandling(config -> config.accessDeniedPage("/user/denied")
-            )
-            .sessionManagement(config ->
-                config.maximumSessions(1).expiredUrl("/user/expired")
-            );
-
-        return httpSecurity.build();
-    }
-
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    AuthenticationManager authenticationManager(
-        HttpSecurity http,
-        BCryptPasswordEncoder bCryptPasswordEncoder,
-        UserDetailsService userDetailService
-    ) throws Exception {
-        return http
-            .getSharedObject(AuthenticationManagerBuilder.class)
-            .userDetailsService(userDetailService)
-            .passwordEncoder(bCryptPasswordEncoder)
-            .and()
-            .build();
+            ).build();
+        
     }
 }
-
-
-
-
-
