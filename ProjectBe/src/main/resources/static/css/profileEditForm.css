@@ -1,0 +1,55 @@
+.container{
+    background-color: rgb(65, 67, 68);
+    color:azure;
+}
+.profileForm{
+    width: 400px;
+    padding-left: 5px;
+}
+.profileForm hr{
+    width: 400px;
+}
+#profileImage{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #cecece;
+    border-radius: 50%;
+}
+#image{
+    display: none;
+}
+#profileFormTitle{
+    color:azure;
+}
+.serverSelect{
+    display: none;
+}
+.profileForm button{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #282a2e;
+    font-size: 10px;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #6c19f1; 
+    color:azure;
+}
+.profileType a{
+    color: azure;
+    text-decoration: none;
+}
+.profileForm input{
+    background-color: #282a2e;
+    border:0px;
+    color:azure;
+    padding: 5px;
+    margin: 5px;
+}
+.formInput{
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+   
+  }
+  
