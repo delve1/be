@@ -14,14 +14,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDto {
-	private int id;
+	private int user_id;
 	private String email;
 	private String nickname;
-	private String phoneNumber;
 	private String name;
 	private MultipartFile profileImage;
 	private String status;
 	private String regdate;
 	private String birth;
+	private String provider;
 }
 
