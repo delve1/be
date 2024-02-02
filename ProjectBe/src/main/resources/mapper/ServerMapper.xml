@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="server">
+	<select id="getList" parameterType="int" resultType="serverDto">
+		SELECT server_id, server_name, st.user_id
+		FROM SERVER_TBL st
+		JOIN USER_TBL ut ON  ut.user_id = st.user_id
+		WHERE ut.USER_ID = #{user_id}
+	</select>
+</mapper>
