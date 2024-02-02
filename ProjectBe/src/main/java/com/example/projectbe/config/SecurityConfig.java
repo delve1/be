@@ -16,7 +16,8 @@ public class SecurityConfig {
         throws Exception {
         // whiteList
         String[] whiteList = {
-            "/", "css/**", "js/**", "img/**"
+            "/", "css/**", "js/**", "img/**",
+            "/user/loginform"
         };
 
         return httpSecurity
