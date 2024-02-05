@@ -26,7 +26,8 @@ public class SecurityConfig {
             ).headers(headers -> headers.frameOptions(options -> options.disable())
             ).authorizeHttpRequests(config -> config
             		.requestMatchers(whiteList).permitAll()
-                    .anyRequest().authenticated()
+            		.anyRequest().permitAll()
+//                    .anyRequest().authenticated()
             ).oauth2Login(withDefaults()
             ).formLogin(withDefaults()
             ).exceptionHandling(config -> config
