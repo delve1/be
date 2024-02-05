@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>profileUpdateForm</title>
+<link rel="stylesheet" href="css/profileEditForm.css">
+</head>
+<style>
+
+</style>
+<body>
+	<div class="container">
+		<h3 id="profileFormTitle">프로필</h3>
+        <div class="profileType">
+            <a href="">사용자 프로필</a>
+            <a href="">서버 프로필</a>
+			<hr/>
+        </div>
+        <div class="serverSelect" >
+            <select name="server" id="">
+                <option value="server1">서버명</option>
+                <option value="server2">서버명</option>
+                <option value="server3">서버명</option>
+            </select>
+        </div>
+		<div class="profileForm">
+			<form action="" method="post" enctype="multipart/form-data" id="editForm">
+				<div class="formInput">
+					<label for="nickname">별명</label>
+					<input type="text" id="nickname" name="nickname" value="별명" readonly/>
+					<hr/>
+				</div>
+				<div class="formInput">
+					<label for="email">이메일</label>
+					<input type="text" id="email" name="email" value="이메일"/>
+					<hr/>
+				</div>
+				<div class="formInput">
+					<label for="phoneNum">전화번호</label>
+					<input type="text" id="phoneNum" name="phoneNum" value="01011111111" />
+					<hr/>
+				</div>
+				<div>
+					<label>프로필 이미지 수정</label>
+					<div>
+						<a href="" id="profileLink">
+							<img src="C://acorn202310/visual_work/html/images/rabbit_1.png" alt="" id="profileImage" />
+						</a>
+						<hr/>
+					</div>
+				</div>
+				<button type="submit">저장</button>
+				<button type="reset">취소</button>
+				<input type="file" id="image" name="image" accept="image/*"/>
+			</form>
+		</div>
+	</div>
+	<script>
+		document.querySelector('#profileLink').addEventListener('click', ()=>{
+			document.querySelector('#image').click();
+		})
+		
+	</script>
+</body>
+</html>
