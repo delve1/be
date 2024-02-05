@@ -15,5 +15,5 @@ import lombok.NoArgsConstructor;
 public class ChannelDto {
 	private int channel_id;
 	private String channel_Name;
-	private int user_id;
+	private int server_id;
 }

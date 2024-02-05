@@ -25,8 +25,6 @@ public class DummyController {
 	}
 	
 	/**
-	 * ㅁㄴㅇㄹㄴㅇㄹ
-	 * ㅁㄴㅇ
 	 * @param path
 	 * @return
 	 */

@@ -8,17 +8,25 @@ DROP SEQUENCE SERVER_TBL_SEQ;
 DROP SEQUENCE USER_SERVER_TBL_SEQ;
 DROP SEQUENCE CANNEL_TBL_SEQ;
 DROP SEQUENCE USER_CHANNEL_TBL_SEQ;
+CREATE SEQUENCE USER_CHANNEL_TBL_SEQ;
+CREATE SEQUENCE USER_TBL_SEQ;
+CREATE SEQUENCE CANNEL_TBL_SEQ;
+CREATE SEQUENCE USER_SERVER_TBL_SEQ;
+CREATE SEQUENCE SERVER_TBL_SEQ;
+
 CREATE TABLE USER_TBL (
 	user_id	NUMBER	NOT NULL PRIMARY KEY,
 	email VARCHAR2(30) NOT NULL UNIQUE,	
 	nickname VARCHAR2(30) UNIQUE,	
-	profile_image VARCHAR2(30) ,
-	status	VARCHAR2(3)	NOT NULL DEFAULT 'YES',
+	profile_image VARCHAR2(30),
+	status VARCHAR2(3)  DEFAULT 'YES' NOT NULL,
 	regdate	DATE NOT NULL,
 	birth DATE,
 	provider VARCHAR2(10)
 );
-CREATE SEQUENCE USER_TBL_SEQ;
+
+
+
 CREATE TABLE SERVER_TBL (
 	server_id NUMBER NOT NULL PRIMARY KEY,
 	user_id NUMBER NOT NULL,
@@ -27,26 +35,26 @@ CREATE TABLE SERVER_TBL (
 	user_total	NUMBER NOT NULL	,
 	CONSTRAINT fk_user_id foreign key(user_id) references USER_TBL (user_id)
 );
-CREATE SEQUENCE SERVER_TBL_SEQ;
+
+CREATE TABLE CHANNEL_TBL (
+	channel_id	NUMBER NOT NULL	PRIMARY KEY,
+	server_id NUMBER NOT NULL,
+	channel_name VARCHAR2(50) NOT NULL,
+	CONSTRAINT fk_CHANNEL_id foreign key(server_id) references SERVER_TBL (server_id)
+);
+
+CREATE TABLE USER_CHANNEL_TBL (
+	server_id	NUMBER	NOT NULL ,
+	channel_id	NUMBER	NOT NULL,
+	CONSTRAINT fk_user_channel_id foreign key(server_id) references SERVER_TBL (server_id),
+	CONSTRAINT fk_user_channel_cid foreign key(channel_id) REFERENCES CHANNEL_TBL(channel_id)
+);
+
 CREATE TABLE USER_SERVER_TBL (
 	server_id NUMBER NOT NULL,	
 	user_id	NUMBER	NOT NULL,
 	CONSTRAINT fk_user_server_id foreign key(user_id) references USER_TBL (user_id),
 	CONSTRAINT fk_user_server_sid foreign key(server_id) references SERVER_TBL (server_id)
 );
-CREATE SEQUENCE USER_SERVER_TBL_SEQ;
-CREATE TABLE CHANNEL_TBL (
-	channel_id	NUMBER NOT NULL	PRIMARY KEY,
-	user_id NUMBER NOT NULL,
-	channel_name VARCHAR2(50) NOT NULL,
-	CONSTRAINT fk_CHANNEL_id foreign key(user_id) references USER_TBL (user_id)
-);
-CREATE SEQUENCE CANNEL_TBL_SEQ;
-CREATE TABLE USER_CHANNEL_TBL (
-	user_id	NUMBER	NOT NULL ,
-	channel_id	NUMBER	NOT NULL,
-	CONSTRAINT fk_user_channel_id foreign key(user_id) references USER_TBL (user_id),
-	CONSTRAINT fk_user_channel_cid foreign key(channel_id) REFERENCES CHANNEL_TBL(channel_id)
-);
-CREATE SEQUENCE USER_CHANNEL_TBL_SEQ;
+
 
