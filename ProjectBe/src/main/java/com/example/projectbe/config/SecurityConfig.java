@@ -4,10 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-<<<<<<< HEAD
-=======
 import org.springframework.security.config.http.SessionCreationPolicy;
->>>>>>> feat/user/oauth
 import org.springframework.security.web.SecurityFilterChain;
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -16,8 +13,6 @@ import com.example.projectbe.handler.OAuth2LoginSuccessHandler;
 import com.example.projectbe.service.CustomOAuth2UserService;
 
 import lombok.RequiredArgsConstructor;
-
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -46,18 +41,17 @@ public class SecurityConfig {
             		.requestMatchers("/secure/**").authenticated()
             		.requestMatchers("/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
-            ).oauth2Login(config -> config
-            		.successHandler(oAuth2LoginSuccessHandler) // 동의하고 계속하기를 눌렀을 때 Handler 설정
-					.failureHandler(oAuth2LoginFailureHandler) // 소셜 로그인 실패 시 핸들러 설정
-					.userInfoEndpoint().userService(customOAuth2UserService) // customUserService 설정
+            ).oauth2Login(withDefaults()
             ).formLogin(withDefaults()
             ).exceptionHandling(config -> config
             		.accessDeniedPage("/user/denied")
-            ).oauth2Login(config -> config
-            		.userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
-            ).sessionManagement(config -> config
-            		.maximumSessions(1).expiredUrl("/user/expired")
             ).build();
+        /*
+         * config -> config
+            		.successHandler(oAuth2LoginSuccessHandler) // 동의하고 계속하기를 눌렀을 때 Handler 설정
+					.failureHandler(oAuth2LoginFailureHandler) // 소셜 로그인 실패 시 핸들러 설정
+					.userInfoEndpoint().userService(customOAuth2UserService) // customUserService 설정
+         */
     }
     
 
