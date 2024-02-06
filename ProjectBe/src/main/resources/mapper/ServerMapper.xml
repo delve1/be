@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="server">
-	<select id="getList" parameterType="int" resultType="serverDto">
-		SELECT server_id, server_name, st.user_id
-		FROM SERVER_TBL st
-		JOIN USER_TBL ut ON  ut.user_id = st.user_id
-		WHERE ut.USER_ID = #{user_id}
+	<resultMap type="serverDto" id="serverDtoMap">
+		<result property="serverId" column="server_id"/>
+		<result property="serverName" column="server_name"/>
+		<result property="userId" column="user_id"/>
+		<result property="regdate" column="regdate"/>
+		<result property="userTotal" column="user_total"/>
+	</resultMap>
+	
+	<select id="getList" parameterType="int" resultType="serverDto" resultMap="serverDtoMap">
+		SELECT server_id, server_name, user_id, regdate, user_total
+		FROM SERVER_TBL 
+		WHERE user_id = #{userId}
 	</select>
 </mapper>

@@ -17,12 +17,7 @@ public class HomeController {
 
     @GetMapping({ "/", "/home", "/index" })
     public String home(Model model) {
-    	sv_service.getInfo(model, 41);
-    	System.out.println("여기 컨트롤러");
-        List<ServerDto> serverList = (List<ServerDto>) model.getAttribute("serverList");
-        for (ServerDto server : serverList) {
-            System.out.println("Server Name: " + server.getServer_name());
-        }
+    	
         return "index";
     }
 }

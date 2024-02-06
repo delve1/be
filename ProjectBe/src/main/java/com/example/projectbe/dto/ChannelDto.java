@@ -19,4 +19,5 @@ public class ChannelDto {
 	private int channelId;
 	private String channelName;
 	private ChannelType channelType; 
+	private int serverId;
 }
