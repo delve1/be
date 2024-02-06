@@ -1,5 +1,8 @@
 package com.example.projectbe.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.projectbe.dto.DummyDto;
 
 import jakarta.annotation.Nullable;
+
 
 @RestController
 public class DummyController {
@@ -36,5 +40,10 @@ public class DummyController {
 	@PostMapping("/dummy/post")
 	public DummyDto postTest(DummyDto dummy) {
 		return dummy;
+	}
+	
+	@GetMapping("/dummy/list")
+	public List<String> getList(){
+		return Arrays.asList("as", "d", "f");
 	}
 }

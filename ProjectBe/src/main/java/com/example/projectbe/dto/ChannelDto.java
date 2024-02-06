@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ChannelDto {
-	private int channel_id;
-	private String channel_Name;
-	private int server_id;
+	private int channelId;
+	private String channelName;
+	private int serverId;
 }

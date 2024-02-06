@@ -13,13 +13,11 @@ import com.example.projectbe.repository.ServerDao;
 @Service
 public class ServerServiceImpl implements ServerService {
 	@Autowired
-	ServerDao dao;
+	private ServerDao dao;
+	
 	@Override
-	public void getInfo(Model model,int user_id) {
-		List<ServerDto> list=dao.getList(user_id);
-		model.addAttribute("serverList",list);
-		System.out.println("여기 서비스");
-		
+	public List<ServerDto> getInfo(int userId) {
+		return dao.getList(userId);
 	}
 
 }
