@@ -25,12 +25,12 @@ CREATE TABLE USER_TBL (
 	provider VARCHAR2(10)
 );
 CREATE TABLE SERVER_TBL (
-	serverId NUMBER NOT NULL PRIMARY KEY,
-	userId NUMBER NOT NULL,
-	serverName	VARCHAR2(50) NOT NULL,
+	server_id NUMBER NOT NULL PRIMARY KEY,
+	user_id NUMBER NOT NULL,
+	server_name	VARCHAR2(50) NOT NULL,
 	regdate	DATE NOT NULL,
-	userTotal	NUMBER NOT NULL	,
-	CONSTRAINT fk_user_id foreign key(userId) references USER_TBL (user_id)
+	user_total	NUMBER NOT NULL	,
+	CONSTRAINT fk_user_id foreign key(user_id) references USER_TBL (user_id)
 );
 
 CREATE TABLE CHANNEL_TBL (
