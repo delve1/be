@@ -6,6 +6,6 @@ import com.example.projectbe.dto.ServerDto;
 
 public interface ServerDao {
 	public void insert(ServerDto dto);
-	public List<ServerDto> getList(int user_id);
-	public void delete(int user_id);
+	public List<ServerDto> getList(int userId);
+	public void delete(int userId);
 }

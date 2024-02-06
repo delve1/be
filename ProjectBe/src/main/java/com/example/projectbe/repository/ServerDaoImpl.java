@@ -19,9 +19,9 @@ public class ServerDaoImpl implements ServerDao {
 	}
 
 	@Override
-	public List<ServerDto> getList(int user_id) {
+	public List<ServerDto> getList(int userId) {
 		
-		return session.selectList("server.getList",user_id);
+		return session.selectList("server.getList", userId);
 	}
 
 	@Override

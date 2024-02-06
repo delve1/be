@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ServerDto {
-	private int server_id;
-	private int user_id;
-	private String server_name;
+	private int serverId;
+	private int userId;
+	private String serverName;
 	private String regdate;
-	private int user_total;
+	private int userTotal;
 }
