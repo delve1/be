@@ -5,7 +5,10 @@ import org.apache.ibatis.type.Alias;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Alias("channelDto")
 @Builder
@@ -13,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ChannelDto {
-	private int channel_id;
-	private String channel_Name;
-	private int user_id;
+	private int channelId;
+	private String channelName;
+	private ChannelType channelType; 
 }
