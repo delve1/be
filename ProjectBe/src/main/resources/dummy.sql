@@ -40,44 +40,44 @@ VALUES
   (USER_TBL_SEQ.NEXTVAL, 'email10@example.com', 'User10', NULL, 'YES', TO_DATE('20220210', 'YYYYMMDD'), TO_DATE('19901010', 'YYYYMMDD'));
 
 -- SERVER_TBL 더미 데이터
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 1 , 'Server1', TO_DATE('20220201', 'YYYYMMDD'), 10);
  
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 2, 'Server2', TO_DATE('20220202', 'YYYYMMDD'), 100);
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 3, 'Server3', TO_DATE('20220203', 'YYYYMMDD'), 100);
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 4, 'Server4', TO_DATE('20220204', 'YYYYMMDD'), 100);
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 5, 'Server5', TO_DATE('20220205', 'YYYYMMDD'), 100);
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 6, 'Server6', TO_DATE('20220206', 'YYYYMMDD'), 100);
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 7, 'Server7', TO_DATE('20220207', 'YYYYMMDD'), 100);
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 8, 'Server8', TO_DATE('20220208', 'YYYYMMDD'), 100);
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 9, 'Server9', TO_DATE('20220209', 'YYYYMMDD'), 100);
 
-INSERT INTO SERVER_TBL (serverId, userId, serverName, regdate, userTotal)
+INSERT INTO SERVER_TBL (server_id, user_id, server_name, regdate, user_total)
 VALUES
   (SERVER_TBL_SEQ.NEXTVAL, 10, 'Server10', TO_DATE('20220210', 'YYYYMMDD'), 100);
 
