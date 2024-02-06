@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	<insert id="insert" parameterType="userDto">
+		INSERT INTO user_tbl
+		(<include refid="allColumn" />)
+		VALUES(user_seq.NEXTVAL, #{socialId}, #{email}, #{nickname}, #{name}, #{profileImage}, 
+			#{status}, #{birth}, #{provider, jdbcType=VARCHAR}, #{role, jdbcType=VARCHAR}, #{refreshToken}, SYSDATE)
+	</insert>
+	
+	<update id="update" parameterType="userDto">
+		UPDATE user_tbl
+		SET email=#{email} <if test="profile != null">, profile=#{profile} </if>
+		WHERE user_id=#{userId}
+	</update>
+	
+	<update id="updateRefreshToken" parameterType="userDto">
+		UPDATE user_tbl
+		SET refresh_token=#{updateRefreshToken}
+		WHERE user_id=#{userId}
+	</update>
+	
+	<select id="findByUserId" parameterType="Long" resultType="userDto">
+		SELECT <include refid="allColumn" />
+		FROM user_tbl
+		WHERE user_id=#{userId}
+	</select>
+	
+	<select id="findByEmail" parameterType="String" resultType="userDto">
+		SELECT <include refid="allColumn" />
+		FROM user_tbl
+		WHERE email=#{email}
+	</select>
+	
+	<select id="findByProviderAndSocialId" parameterType="java.util.Map" resultType="userDto">
+		SELECT <include refid="allColumn" />
+		FROM user_tbl
+		WHERE provider=#{pas.provider, javaType=provider, jdbcType=VARCHAR} AND social_id=#{pas.socialId, jdbcType=VARCHAR}
+	</select>
+	
+	<sql id="allColumn">
+		user_id, social_id, email, nickname, name, profile_image, 
+			status, birth, provider, role, refresh_token, regdate
+	</sql>
+</mapper>
