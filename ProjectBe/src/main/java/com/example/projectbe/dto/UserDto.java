@@ -1,7 +1,6 @@
 package com.example.projectbe.dto;
 
 import org.apache.ibatis.type.Alias;
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,14 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDto {
-	private int userId;
+	private Long userId;
+	private String socialId;
 	private String email;
 	private String nickname;
 	private String name;
-	private MultipartFile profileImage;
+	private String profileImage;
 	private String status;
-	private String regdate;
 	private String birth;
-	private String provider;
+	private Provider provider;
+	private Role role;
+	private String refreshToken;
+	private String regdate;
 }
-
