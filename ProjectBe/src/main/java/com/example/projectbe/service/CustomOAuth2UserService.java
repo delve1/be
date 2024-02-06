@@ -27,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final UserDao userDao;
+    private UserDto userDto;
 
     private static final String GOOGLE = "google";
     private static final String GIHUB = "github";
@@ -71,15 +72,14 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 attributes,
                 extractAttributes.getNameAttributeKey(),
                 createdUser.getEmail(),
-                createdUser.getRole()
-        );
+                createdUser.getRole());
     }
 
     private Provider getProvider(String registrationId) {
-        if(GOOGLE.equals(registrationId)) {
+        if (GOOGLE.equals(registrationId)) {
             return Provider.GOOGLE;
         }
-        if(GIHUB.equals(registrationId)) {
+        if (GIHUB.equals(registrationId)) {
             return Provider.GITHUB;
         }
         return Provider.GOOGLE;
